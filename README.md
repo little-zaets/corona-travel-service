@@ -1,2 +1,2 @@
 # corona-travel-service
-Developer's Institute Final Project
+Developer's.Institute Final Project
