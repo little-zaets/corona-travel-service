@@ -21,7 +21,7 @@ const Register = ({ history }) => {
 			});
 			console.log('Register User ===> ', response);
 			toast.success('Registration Successful. You can now login.');
-			history.push('/login'); 
+			window.location = '/login'; 
 		}
 		catch (err) {
 			console.log(err.message);
@@ -33,9 +33,7 @@ const Register = ({ history }) => {
 	
 	return (
 		<>
-			<div className="container-fluid bg-secondary p-5 text-center">
-				<h1>Register</h1>
-			</div>
+
 			
 			<ToastContainer />
 			

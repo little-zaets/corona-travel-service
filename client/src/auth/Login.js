@@ -13,6 +13,7 @@ const Login = () => {
       let response = await login(email, password);
       if (response.data) {
         console.log(response.data)
+        window.location = '/dashboard';
       }
     }
     catch (err) {

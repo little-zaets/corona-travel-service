@@ -1,3 +1,4 @@
+//ORM
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 const db = require("../modules/db").db; // .db assigns exported module object exported from db.js
@@ -29,6 +30,9 @@ export const login = (req, res) => {
               expiresIn: "1h"
             });
             console.log("token", token);
+            res.cookie("auth", token, {
+              maxAge: 900000,
+            });
             res.status(200).json({ user: user[0], token: token });
           })
           .catch((err) => {

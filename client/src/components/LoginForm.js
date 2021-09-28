@@ -1,5 +1,11 @@
-import Form from "react-bootstrap/Form";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { Link } from 'react-router-dom';
+import { Form, Input, Button, Checkbox } from "antd";
+import {
+  UserOutlined,
+  LockOutlined,
+  EyeInvisibleOutlined,
+  EyeTwoTone
+} from "@ant-design/icons";
 
 const LoginForm = ({
   //destruct needed props right away
@@ -8,37 +14,66 @@ const LoginForm = ({
   setEmail,
   password,
   setPassword
-}) => (
-  <Form.Floating onClick={handleSubmit} className="mt-3">
-    <FloatingLabel
-      className="mb-3"
-      controlId="floatingInput"
-      label="Email Address"
+}) => {
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+  };
+  return (
+    <Form
+      name="normal_login"
+      className="login-form"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   handleSubmit();
+      // }}
     >
-      <Form.Control
-        type="email"
-        placeholder="Enter Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-    </FloatingLabel>
-
-    <FloatingLabel
-      className="mb-3"
-      controlId="floatingPassword"
-      label="Password"
-    >
-      <Form.Control
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-    </FloatingLabel>
-    <button disabled={!email || !password} className="btn btn-secondary">
-      Submit
-    </button>
-  </Form.Floating>
-);
+      <Form.Item
+        name="email"
+        rules={[{ required: true, message: "Please input your Email!" }]}
+      >
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: "Please input your Password!" }]}
+      >
+        <Input.Password
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          iconRender={(visible) =>
+            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+          }
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+        <Link className="login-form-forgot" to="">
+          Forgot password
+        </Link>
+      </Form.Item>
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          disabled={!email || !password}
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
+        Or <Link to="/register"> Register Now!</Link>
+      </Form.Item>
+    </Form>
+  );
+};
 
 export default LoginForm;

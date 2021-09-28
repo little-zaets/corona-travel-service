@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-export const register = async (user) => {
-	await axios.post(`${process.env.REACT_APP_API}/register`, user);
+export const register = async (name, email, password) => {
+	await axios.post(`${process.env.REACT_APP_API}/register`);
 }
 
-export const login = async (user) => {
-	await axios.post(`${process.env.REACT_APP_API}/login`, user);
-}
+export const login = async (email, password) => {
+	const data = { email, password };
+	//send route and user object to backend to check credentials 
+	return await axios.post(`${process.env.REACT_APP_API}/login`, data, { withCredentials: true });
+}	

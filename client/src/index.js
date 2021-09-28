@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension'; //to use Chrome redux tool
 import logger from 'redux-logger';
 import rootReducer from './reducers';
+import 'antd/dist/antd.css';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)));
 
