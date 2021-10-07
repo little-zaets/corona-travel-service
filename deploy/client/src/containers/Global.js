@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import WorldStats from '../components/WorldStats';
+import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { Typography, Row, Col, Space, Statistic } from "antd";
-const { Title } = Typography;
+
 
 export default class Global extends Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class Global extends Component {
         'Recovered': 0,
         'Active': 0
 			},
-			isLoading: false
+			isLoading: true
     };
   }
 	async componentDidMount() {
@@ -27,7 +28,8 @@ export default class Global extends Component {
         'Deaths': covidData.deaths,
         'Recovered': covidData.recovered,
         'Active': covidData.active
-			}
+			},
+			isLoading: false
 		})
 	}
 	render() {
@@ -39,11 +41,10 @@ export default class Global extends Component {
 				total={this.state.result[key]} />
 		})
 		return (
-			<div className="world-stats">
-				<Row>
-					{Stats}
-				</Row>
-			</div>
-		)
+      <div className="world-stats">
+        {this.state.isLoading ? <Spinner /> : null}
+        <Row>{Stats}</Row>
+      </div>
+    );
   }
 }

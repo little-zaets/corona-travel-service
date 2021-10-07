@@ -8,7 +8,6 @@ const Register = ({ history }) => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	//need to add email validation
 	
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -33,13 +32,8 @@ const Register = ({ history }) => {
 	
 	return (
 		<>
-
-			
 			<ToastContainer />
-			
-			<div className="container">
-				<div className="row">
-					<div className="col-md-6 offset-md-3">
+      <div className={"login-form-outer"}>
 						<RegisterForm
 							handleSubmit={handleSubmit}
 							name={name}
@@ -50,10 +44,8 @@ const Register = ({ history }) => {
 							setPassword={setPassword}
 						/>
 					</div>
-				</div>
-			</div>
 		</>
-	);
+	)
 }
 
 export default Register;
