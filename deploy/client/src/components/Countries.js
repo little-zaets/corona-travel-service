@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Select } from "antd";
+import { Select } from 'antd';
 const { Option } = Select;
 
 class Countries extends Component {
@@ -16,13 +16,13 @@ class Countries extends Component {
     this.props.onTrigger(value);
   };
 	handleClick = () => {
-		console.log("blalalalla")
+		console.log('blalalalla')
     this.props.onSearch();
   };
   async componentDidMount() {
     try {
       let dict = {};
-      const data = await axios.get("https://api.covid19api.com/summary");
+      const data = await axios.get('https://api.covid19api.com/summary');
       const countryList = data.data.Countries;
       countryList.forEach((item, index) => {
         dict[index] = {
@@ -31,7 +31,6 @@ class Countries extends Component {
         };
       });
       this.setState({ CountryDict: dict });
-      // console.log(this.state);
       console.log(this.props);
     }
     catch (err) {
@@ -46,8 +45,9 @@ class Countries extends Component {
         <Option
           key={i}
           value={this.state.CountryDict[key].countryCode}
+          style={{ textAlign: 'center', padding: 10}}
         >
-          {this.state.CountryDict[key].countryCode} -{" "}
+          {this.state.CountryDict[key].countryCode} - 
           {this.state.CountryDict[key].country}
         </Option>
       );
@@ -55,11 +55,10 @@ class Countries extends Component {
     return (
       <>
         <Select
-          style={{ width: 200 }}
-          placeholder="Select a Country"
-          optionFilterProp="children"
+          style={{ width: 400 }}
+          placeholder='Select a Country'
+          optionFilterProp='children'
           onChange={this.handleTrigger}
-          style={{ width: "100%" }}
         >
           {this.state.CountryDict && CountriesList}
         </Select>

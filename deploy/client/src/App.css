@@ -615,3 +615,6 @@ details[open] summary {
  .ant-select-selection-item {
    color: black;
  }
+ .ant-select ant-select-single {
+   opacity: 0.5;
+ }

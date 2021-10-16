@@ -1,18 +1,18 @@
-import Form from "react-bootstrap/Form";
-import { Row, Col, Select } from "antd";
-import { React, Component } from "react";
-import axios from "axios";
-import Result from "./Result";
+import Form from 'react-bootstrap/Form';
+import { Row, Col, Select } from 'antd';
+import { React, Component } from 'react';
+import axios from 'axios';
+import Result from './Result';
 import Countries from '../components/Countries';
-import Spinner from "../components/Spinner";
+import Spinner from '../components/Spinner';
 
 class RestrictionsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      token: "",
-      tokenStatus: "",
-      searchField: "FR",
+      token: '',
+      tokenStatus: '',
+      searchField: '',
       result: null,
       isLoading: false
     };
@@ -28,14 +28,14 @@ class RestrictionsContainer extends Component {
   };
 
   getAuthToken = async () => {
-    const client_id = "4UjCoZLnTK3AGJAxMBs9wuzgEt7Oqlel";
-    const client_secret = "41GADDaEUJ32t7uv";
+    const client_id = '4UjCoZLnTK3AGJAxMBs9wuzgEt7Oqlel';
+    const client_secret = '41GADDaEUJ32t7uv';
     const api_call = await fetch(
-      "https://test.api.amadeus.com/v1/security/oauth2/token?",
+      'https://test.api.amadeus.com/v1/security/oauth2/token?',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`
       }
@@ -51,7 +51,7 @@ class RestrictionsContainer extends Component {
 
   getRestrictions = async (userLoaded, value) => {
     const token_status = this.state.tokenStatus;
-    if (token_status !== "approved") {
+    if (token_status !== 'approved') {
       const authToken = await this.getAuthToken();
     }
     const response = await fetch(
@@ -74,10 +74,10 @@ class RestrictionsContainer extends Component {
 
   handleSubmit = async () => {
     try {
-      console.log("In handle submit")
       const response = this.getRestrictions(this.props.userLoaded);
       return <>{this.state.result}</>;
-    } catch (err) {
+    }
+    catch (err) {
       console.error(err);
     }
   };

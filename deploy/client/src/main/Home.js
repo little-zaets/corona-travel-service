@@ -1,13 +1,10 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import RestrictionsContainer from "../containers/RestrictionsContainer";
 import Global from "../containers/Global";
-import { Typography, Row, Col, Space, Statistic } from "antd";
+import { Typography} from "antd";
 
 const { Title } = Typography;
 
 const Home = (props) => {
-  // const { user } = useSelector((state) => ({ ...state }));
 
   return (
     <>

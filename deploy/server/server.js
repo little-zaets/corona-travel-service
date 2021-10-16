@@ -7,9 +7,6 @@ require('dotenv').config();
 
 const app = express();
 
-//set view engine 
-app.set('view engine', 'ejs');
-
 //middlewares
 // app.use(cors());
 app.use(morgan('dev'));
@@ -61,5 +58,5 @@ readdirSync('./routes').map((r) => {
 
 
 //access .env variables
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
