@@ -55,7 +55,7 @@ class Countries extends Component {
     return (
       <>
         <Select
-          style={{ width: 400 }}
+          style={{ minWidth: "250px", maxWidth: "100%", margin: "20px auto 0" }}
           placeholder='Select a Country'
           optionFilterProp='children'
           onChange={this.handleTrigger}

@@ -12,9 +12,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Drawer, Button, Radio } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
+import { useWindowSize } from "./hooks/useWindowSize";
 
 const NavbarOuter = (props) => {
-  if (window.innerWidth < 500) {
+  const { width } = useWindowSize();
+  if (width < 500) {
     return (
       <>
         <div onClick={props.openDrawer} className={"drawer-icon"}>
@@ -50,7 +52,7 @@ const App = () => {
   const fetchUser = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/checkToken`,
+        process.env.REACT_APP_API + `/checkToken`,
         { withCredentials: true }
       );
       return { success: true, data: response.data };
@@ -142,12 +144,12 @@ const App = () => {
               style={{
                 width: "190px",
                 position: "relative",
-                margin: "5px auto 0"
+                margin: "5px auto 0",
+                textAlign: "center"
               }}
             >
               <Space className="footer-links">
                 <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
               </Space>
