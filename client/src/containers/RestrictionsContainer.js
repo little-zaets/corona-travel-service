@@ -63,7 +63,7 @@ class RestrictionsContainer extends Component {
     const result = await response.json();
      console.log(result);
     if (userLoaded) {
-      await axios.post(`${process.env.REACT_APP_API}/save`, result, {
+      await axios.post(`${process.env.REACT_APP_API}/api/save`, result, {
         withCredentials: true
       });
     }

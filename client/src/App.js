@@ -104,7 +104,7 @@ const App = () => {
                   </div>
                 </Route>
 
-                <Route exact path="/search_history">
+                <Route path="/search_history">
                   {userLoaded && (
                     <div className={"page-container"}>
                       <SearchHistory />
@@ -112,14 +112,14 @@ const App = () => {
                   )}
                 </Route>
 
-                <Route exact path="/login">
+                <Route path="/login">
                   {!userLoaded && (
                     <div className={"page-container"}>
                       <Login />
                     </div>
                   )}
                 </Route>
-                <Route exact path="/register">
+                <Route path="/register">
                   {!userLoaded && (
                     <div className={"page-container"}>
                       <Register />
