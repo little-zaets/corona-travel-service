@@ -59,9 +59,9 @@ const NavBar = (props) => {
         )}
         {props.userLoaded && (
           <Menu.Item key="5" className="menu-selected" icon={<UserOutlined />}>
-            <a href={"#"} onClick={logout}>
+            <Link to={"#"} onClick={logout}>
               Logout
-            </a>
+            </Link>
           </Menu.Item>
         )}
       </Menu>
