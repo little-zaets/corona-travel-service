@@ -7,5 +7,3 @@ Features:
 - Registration and Secure Storage using Hashing
 - Authentication and Authorization using JWT and Cookies
 - Search History Auto-Save after Authentication
-
-Click [here](https://red-avert-client.herokuapp.com/) to view demo.
